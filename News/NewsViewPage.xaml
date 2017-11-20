@@ -10,10 +10,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <StackLayout>
-                    <Label Text="BBC News" FontSize="Small" TextColor="{StaticResource descColor}" />
-                    <Label x:Name="titleLabel" FontSize="Medium" TextColor="{StaticResource descColor}" />
-                </StackLayout>
+                <Label x:Name="titleLabel" FontSize="Medium" TextColor="{StaticResource descColor}" />
             </Grid>
             <WebView x:Name="webview1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
         </StackLayout>
