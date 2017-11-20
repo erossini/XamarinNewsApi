@@ -1,2 +1,2 @@
 # XamarinNewsApi
-Client for !(http://newsapi.org)[NewsApi.org] in Xamarin Forms
+Client for http://newsapi.org in Xamarin Forms
