@@ -56,5 +56,19 @@ namespace News.Models.Responses
         /// <value>The published at.</value>
 		[JsonProperty("publishedAt")]
 		public DateTime? PublishedAt { get; set; }
+
+        /// <summary>
+        /// Gets the published at text.
+        /// </summary>
+        /// <value>The published at text.</value>
+        [JsonIgnore]
+        public string PublishedAtText {
+            get {
+                if (PublishedAt == null)
+                    return "Publish data unknown";
+                else
+                    return ((DateTime)PublishedAt).ToString("dd/MM/yy @ HH:mm");
+            }
+        }
 	}
 }
