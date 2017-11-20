@@ -34,6 +34,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewsSource.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -44,8 +48,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Code\Constants.cs" />
-    <Compile Include="Models\Responses\SourceResponse.cs" />
-    <Compile Include="Models\Responses\ArticleResponse.cs" />
+    <Compile Include="Models\Responses\ArticleModel.cs" />
     <Compile Include="Models\Responses\NewsResponse.cs" />
     <Compile Include="Code\NewsClient.cs" />
     <Compile Include="Interfaces\INewsApi.cs" />
@@ -54,6 +57,13 @@
     <Compile Include="NewsViewPage.xaml.cs">
       <DependentUpon>NewsViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewsSource.xaml.cs">
+      <DependentUpon>NewsSource.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\NewsSourceViewModel.cs" />
+    <Compile Include="Models\Responses\SourceModel.cs" />
+    <Compile Include="Models\Responses\SourceResponse.cs" />
+    <Compile Include="Helpers\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -79,6 +89,12 @@
     </Reference>
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
       <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\portable-net45+wp80+win8+wpa81\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\netstandard1.0\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings">
+      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\netstandard1.0\Plugin.Settings.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

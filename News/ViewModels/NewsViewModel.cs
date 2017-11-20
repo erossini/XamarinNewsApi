@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using News.Code;
+using News.Helpers;
 using News.Models.Responses;
 using PSC.Xamarin.MvvmHelpers;
 using Xamarin.Forms;
@@ -14,7 +15,7 @@ namespace News.ViewModels
     /// </summary>
     public class NewsViewModel : BaseViewModel
     {
-        public ObservableCollection<ArticleResponse> ArticleList { get; set; }
+        public ObservableCollection<ArticleModel> ArticleList { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:News.ViewModels.NewsViewModel"/> class.
@@ -35,10 +36,10 @@ namespace News.ViewModels
             IsBusy = true;
 
             NewsClient client = new NewsClient();
-            NewsResponse news = await client.GetNews("bbc-news", Constants.ApiKey);
+            NewsResponse news = await client.GetNews(Settings.Source, Constants.ApiKey);
             if (news != null && news.Status.ToLower() == "ok")
             {
-                ArticleList = new ObservableCollection<ArticleResponse>(news.Articles);
+                ArticleList = new ObservableCollection<ArticleModel>(news.Articles);
                 if (ArticleList.Count > 0)
                 {
                     ShowEmpty = false;

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" x:Class="News.NewsSource" Title="Select your news">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <ContentView x:Name="cvLoading" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" IsVisible="{Binding IsBusy}" BackgroundColor="White" Padding="10, 0">
+                <ActivityIndicator WidthRequest="110" HeightRequest="70" IsRunning="True" IsVisible="True" Color="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </ContentView>
+            <StackLayout x:Name="stackEmpty" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ShowEmpty}" Spacing="0" Padding="20">
+                <Label x:Name="labelEmpty" Text="No source found." HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout IsVisible="{Binding ShowListView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding SourceList}" ItemTapped="Handle_ItemTapped" ItemSelected="Handle_ItemSelected" HasUnevenRows="true" IsPullToRefreshEnabled="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RefreshCommand="{Binding RefreshCommand}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" RowSpacing="0" ColumnSpacing="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" VerticalOptions="Start" FontSize="Medium" FontAttributes="Bold" TextColor="{StaticResource rssColor}" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" VerticalOptions="Start" FontSize="Small" TextColor="{StaticResource descColor}" />
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Url}" VerticalOptions="Start" FontSize="Small" TextColor="{StaticResource linkColor}" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

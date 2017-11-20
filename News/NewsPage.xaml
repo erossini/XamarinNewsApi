@@ -18,7 +18,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label Text="{Binding LastUpdate}" FontSize="Small" TextColor="{StaticResource descColor}" />
+                <Label Text="{Binding LastUpdate}" FontSize="Small" TextColor="{StaticResource descColor}" VerticalOptions="CenterAndExpand" />
+                <Button Text="Change Source" Clicked="Change_Clicked" Grid.Column="1" TextColor="{StaticResource descColor}" />
             </Grid>
             <ListView ItemsSource="{Binding ArticleList}" ItemTapped="Handle_ItemTapped" ItemSelected="Handle_ItemSelected" HasUnevenRows="true" IsPullToRefreshEnabled="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>

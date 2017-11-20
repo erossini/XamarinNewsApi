@@ -21,6 +21,6 @@ namespace News.Models.Responses
         /// </summary>
         /// <value>The articles.</value>
         [JsonProperty("articles")]
-        public IList<ArticleResponse> Articles { get; set; }
+        public IList<ArticleModel> Articles { get; set; }
     }
 }

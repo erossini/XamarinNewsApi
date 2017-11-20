@@ -6,14 +6,14 @@ namespace News.Models.Responses
     /// <summary>
     /// Article response.
     /// </summary>
-    public class ArticleResponse
+    public class ArticleModel
     {
         /// <summary>
         /// Gets or sets the source.
         /// </summary>
         /// <value>The source.</value>
 		[JsonProperty("source")]
-		public SourceResponse Source { get; set; }
+        public SourceModel Source { get; set; }
 
         /// <summary>
         /// Gets or sets the author.
@@ -55,6 +55,6 @@ namespace News.Models.Responses
         /// </summary>
         /// <value>The published at.</value>
 		[JsonProperty("publishedAt")]
-		public DateTime PublishedAt { get; set; }
+		public DateTime? PublishedAt { get; set; }
 	}
 }

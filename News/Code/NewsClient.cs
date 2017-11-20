@@ -33,5 +33,31 @@ namespace News.Code
 
             return rtn;
         }
+
+        /// <summary>
+        /// Gets the sources.
+        /// </summary>
+        /// <returns>The sources.</returns>
+        /// <param name="apikey">Apikey.</param>
+        public async Task<SourceResponse> GetSources(string apikey)
+        {
+            SourceResponse rtn = new SourceResponse();
+
+            try
+            {
+                var client = RestService.For<INewsApi>(Constants.UrlNews);
+                rtn = await client.GetSources(apikey);
+            }
+            catch (ApiException ax)
+            {
+                Debug.WriteLine("Api error: " + ax.Message);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Generic error: " + ex.Message);
+            }
+
+            return rtn;
+        }
     }
 }

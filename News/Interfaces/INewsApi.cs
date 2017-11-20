@@ -19,5 +19,13 @@ namespace News.Interfaces
         /// <param name="apikey">Apikey.</param>
         [Get("/v2/top-headlines?sources={source}&apiKey={apikey}")]
         Task<NewsResponse> GetNews(string source, string apikey);
+
+        /// <summary>
+        /// Gets the sources.
+        /// </summary>
+        /// <returns>The sources.</returns>
+        /// <param name="apikey">Apikey.</param>
+        [Get("/v2/sources?apiKey={apikey}")]
+        Task<SourceResponse> GetSources(string apikey);
     }
 }
