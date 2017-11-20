@@ -47,5 +47,7 @@
 		<key>NSAllowsArbitraryLoads </key>
 		<true/>
 	</dict>
+	<key>XSLaunchImageAssets</key>
+	<string>Assets.xcassets/LaunchImage.launchimage</string>
 </dict>
 </plist>
