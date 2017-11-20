@@ -36,7 +36,7 @@ namespace News.ViewModels
 
             NewsClient client = new NewsClient();
             NewsResponse news = await client.GetNews("bbc-news", Constants.ApiKey);
-            if (news.Status.ToLower() == "ok")
+            if (news != null && news.Status.ToLower() == "ok")
             {
                 ArticleList = new ObservableCollection<ArticleResponse>(news.Articles);
                 if (ArticleList.Count > 0)
@@ -44,12 +44,32 @@ namespace News.ViewModels
                     ShowEmpty = false;
                     ShowListView = true;
                 }
+                OnPropertyChanged(nameof(ArticleList));
             }
 
+            ChangeLastUpdate();
             IsBusy = false;
         }
 
         #region Models
+        /// <summary>
+        /// Gets or sets the last update.
+        /// </summary>
+        /// <value>The last update.</value>
+        public string LastUpdate
+        {
+            get => _lastUpdate;
+            set
+            {
+                if (_lastUpdate != value)
+                {
+                    _lastUpdate = value;
+                    OnPropertyChanged(nameof(LastUpdate));
+                }
+            }
+        }
+        string _lastUpdate;
+
         /// <summary>
         /// The show empty
         /// </summary>
@@ -75,7 +95,7 @@ namespace News.ViewModels
                 if (_showEmpty != value)
                 {
                     _showEmpty = value;
-                    OnPropertyChanged("ShowEmpty");
+                    OnPropertyChanged(nameof(ShowEmpty));
                 }
             }
         }
@@ -95,27 +115,35 @@ namespace News.ViewModels
                 if (_showListView != value)
                 {
                     _showListView = value;
-                    OnPropertyChanged("ShowListView");
+                    OnPropertyChanged(nameof(ShowListView));
                 }
             }
         }
-		#endregion
-		#region Commands
-		ICommand _refreshCommand = null;
+        #endregion
+        #region Commands
+        ICommand _refreshCommand = null;
 
         public ICommand RefreshCommand
-		{
-			get
-			{
-				return _refreshCommand ?? (_refreshCommand =
-										  new Command(async (object obj) => await ExecuteRefreshCommand()));
-			}
-		}
+        {
+            get
+            {
+                return _refreshCommand ?? (_refreshCommand =
+                                          new Command(async (object obj) => await ExecuteRefreshCommand()));
+            }
+        }
 
         async Task ExecuteRefreshCommand()
-		{
+        {
             await LoadData();
-		}
+        }
+        #endregion
+        #region Functions
+        /// <summary>
+        /// Changes the last update.
+        /// </summary>
+        void ChangeLastUpdate() {
+            LastUpdate = "Last update at " + DateTime.Now.ToString("dd/MM/yy @ HH:mm");
+        }
         #endregion
     }
 }

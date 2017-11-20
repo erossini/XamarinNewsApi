@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="News.NewsViewPage"
+    Title="News">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource rssColor}" Padding="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackLayout>
+                    <Label Text="BBC News" FontSize="Small" TextColor="{StaticResource descColor}" />
+                    <Label x:Name="titleLabel" FontSize="Medium" TextColor="{StaticResource descColor}" />
+                </StackLayout>
+            </Grid>
+            <WebView x:Name="webview1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

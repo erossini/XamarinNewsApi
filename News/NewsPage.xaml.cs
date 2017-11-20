@@ -31,7 +31,7 @@ namespace News
 			if (source == null)
 				return;
 
-			//await Navigation.PushAsync(new SourceItem(source.Id), true);
+            await Navigation.PushAsync(new NewsViewPage(source.Title, source.Url), true);
 		}
 	}
 }

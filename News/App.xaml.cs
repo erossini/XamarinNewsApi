@@ -8,7 +8,7 @@ namespace News
         {
             InitializeComponent();
 
-            MainPage = new NewsPage();
+            MainPage = new NavigationPage(new NewsPage());
         }
 
         protected override void OnStart()

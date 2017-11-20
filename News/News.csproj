@@ -30,6 +30,10 @@
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
     <EmbeddedResource Include="NewsPage.xaml" />
+    <EmbeddedResource Include="NewsViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -47,6 +51,9 @@
     <Compile Include="Interfaces\INewsApi.cs" />
     <Compile Include="Code\HttpLoggingHandler.cs" />
     <Compile Include="ViewModels\NewsViewModel.cs" />
+    <Compile Include="NewsViewPage.xaml.cs">
+      <DependentUpon>NewsViewPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
